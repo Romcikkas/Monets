@@ -1,0 +1,109 @@
+html {
+    box-sizing: border-box;
+    /* vnutrinie otstupy i ramocka vnutri budut nahoditsa, legce budet opredeliat razmer elementa */
+}
+
+/* nasleduem box-sizing dla vseh elementov i psevdoelementov, potomuchto box-sizing ne nasleduetsa po umolchaniju */
+*,
+a:before,
+a:after {
+    box-sizing: inherit;
+}
+
+body {
+    min-width: 320px;
+    /* minimalnaja shirina v makete (mob versija)*/
+    min-height: 100vh;
+    /* Relative to 1% of the height of the viewport, (vh - height, vw - width) */
+    font-family: Inter, sans-serif;
+    /* Chiashie vsego vstrechiajushejsia shrift v makete i zapasnoj shrift */
+}
+
+img,
+svg {
+    max-width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+
+button {
+    padding: 0;
+    /* budem sami paddingi v knopkah propisyvat */
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+h1, h2, h3, h4 {
+    margin: 0;
+}
+
+.container {
+    max-width: 1240px; /* v makete kontejner 1180px, po 30 na paddingi */
+    margin: 0 auto;
+    padding: 0 30px; /* 30px (po svoemu vkusu, tak kak v makete ne ukazany) paddingi s bokov konteinera, poluchaem sisniuju chiast v computed 1180px */
+}
+
+.overlay {
+    position: fixed; /* budet fiksirovat na ekrane */
+    inset: 0px; /* svojstvo inset rovno top left right i bottom */
+    z-index: 999; /* dla togo, chtoby vynesti vverh */
+    background-color: rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    overflow-y: auto; /* dla togo, chtoby skrolit stranicu */
+    overflow-x: hidden; /* zashitit ot skrola bokovogo */
+
+    opacity: 0; /* delaem overlay prozracnym */ 
+    visibility: hidden; /* uberaem overlay, teper mozem skrolit */
+
+    transition-property: opacity, visibility;
+    transition-duration: 0.4s;
+    transition-timing-function: ease-in-out;
+
+    white-space: nowrap; /* chtoby neperenosilis bloki */
+    text-align: center; /* chtoby modalnoe okno bylo po centru */
+}
+
+.overlay:after {
+    content: ''; /* budet pustoj, ne budem ego vidiat, no element budet prisutstvovat */ 
+    display: inline-block; /* dla etogo nowrap i ispolzuem */
+    vertical-align: middle; /* vystraivaem po centru */
+    height: 100%;
+}
+
+.overlay_open {
+    opacity: 1;
+    visibility: visible;
+}
+
+@media (max-width: 1024px) {
+    .container {
+        max-width: 840px; /* v makete 780px, po 30 na paddingi */
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 740px;
+    }
+}
+
+@media (max-width: 520px) { /* v makete 320, no eto slishkom malo, mozno ispolzovat 400-580 */
+    .container {
+        padding: 0 15px; /* konteiner uze meniat ne budem, umenshim paddingi do 15 */
+    }
+}
+
+
+
+
+

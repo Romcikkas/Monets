@@ -1,0 +1,44 @@
+.navigation__list {
+    display: flex;
+    align-items: center; /* uzhe byli vyrovniany, no na vsiakij sluchiaj */
+}
+
+.navigation__item {
+    margin-right: 43px;
+}
+
+.navigation__item:last-child { /* ubiraem otstup poslednemu elementu */
+    margin-right: 0;
+}
+
+@media(max-width: 768px) {
+    .navigation__list {
+        margin: 0 auto;
+        max-width: 740px;
+    }
+
+    .navigation__list_header {
+        padding: 16px 30px;
+    }
+} 
+
+@media(max-width: 520px) {
+    .navigation__list {
+        flex-direction: column;
+        align-items: flex-start; /* chtoby prizhat v leva */
+    }
+
+    .navigation__list_header {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .navigation__item {
+        margin-bottom: 20px;
+        margin-right: 0;
+    }
+
+    .navigation__item:last-child {
+        margin-bottom: 0;
+    }
+}

@@ -1,0 +1,41 @@
+.header {
+    background-color #fff;
+    position: relative; /* esli my hotim chtoto pozitionirovat, to nuzhen roditel vyshe so svoistvom relative */
+    z-index: 1; /* chtoby meniu nezaezhala za ciornyj fon */
+}
+
+.header__container {
+    display: flex; /* elementy vstajut v riad */
+    justify-content: space-between; /* rastiagivaeat na ves kontejner */
+    align-items: center; /* po vertikali chtob raspalagalis po centru */
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #fff;
+}
+
+.header__nav-btn {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .header__nav-btn {
+        display: block;
+        background-color: transparent;
+        border: 0;
+        line-height: 0; /* ubiraem odstup u burger knopocki svg - on opredeliaetsa kak tekst */
+    }
+
+    .header__navigation {
+        position: absolute; /* position absolute i translateY 100%, ctoby spustit v nizniuju stroku nav */
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: -1; /* vystavliaem na pervyj plan logo, meniu priacetsa za logo */
+        background-color: #fff;
+        transition: transform 0.35s ease-in-out;
+    }
+    
+    .header__navigation_open {
+        transform: translateY(calc(100% - 1px)); /* opuskaem nav v niz, s pomoshju calc uberaem nenuzhnuju liniju,podnimaem vyzhe na 1px */
+    }
+}
